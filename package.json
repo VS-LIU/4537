@@ -1,0 +1,11 @@
+{
+  "name": "4537",
+  "version": "1.0.0",
+  "description": "COMP4537 - Lab 0 \r Victor Liu #A00971668 - set C\r 2024-09-08",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

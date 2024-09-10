@@ -31,7 +31,7 @@ class Game {
         this.scrambleButtons(numButtons);
     }
 
-    //asked ChatGPT for code to remove existing text content
+    
     endCurrentGame() {
         const textBoxHTMLContainer = document.getElementById("defaultTextBox");
         if (this.textbox && this.textbox.textDiv) {
@@ -56,8 +56,8 @@ class Game {
         const containerRect = container.getBoundingClientRect();
         const containerWidth = containerRect.width;
         const containerHeight = containerRect.height;
-        const buttonWidth = 100; // Adjust width (in pixels) if needed
-        const buttonHeight = 50; // Adjust height (in pixels) if needed
+        const buttonWidth = 100;
+        const buttonHeight = 50;
         const padding = 10; // Padding between buttons (in pixels)
 
         let top = 0;

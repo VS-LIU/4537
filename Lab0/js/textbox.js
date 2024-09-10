@@ -14,9 +14,9 @@ class TextBox {
         // this.textDiv.style.backgroundColor = "#b8b8b8";
         this.textDiv.style.width = width;
         this.textDiv.style.height = height;
-        this.textDiv.style.display = 'flex';  // Use flexbox
-        this.textDiv.style.justifyContent = 'center';  // Center horizontally
-        this.textDiv.style.alignItems = 'center';  // Center vertically
+        this.textDiv.style.display = 'flex';  
+        this.textDiv.style.justifyContent = 'center';  
+        this.textDiv.style.alignItems = 'center';  
         // this.textDiv.setAttribute("data-is-active", "false");
         document.getElementById("defaultTextBox").appendChild(this.textDiv);
         this.setLocation(top, left);

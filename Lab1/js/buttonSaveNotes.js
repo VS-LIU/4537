@@ -12,11 +12,11 @@ class ButtonSaveNotes {
     constructor() {
         this.button = document.createElement("button");
         this.button.innerHTML = "Save";
-        this.button.addEventListener('click', () => this.saveNote());
+        this.button.addEventListener('click', () => this.saveNotes());
         document.body.appendChild(this.button);
     }
 
-    saveNote(notes) {
+    saveNotes(notes) {
         console.log("Manually saving notes to local storage..");
 
         let notesFromStorage = JSON.parse(localStorage.getItem("notes"));
@@ -24,7 +24,7 @@ class ButtonSaveNotes {
             notesFromStorage = [];
         }
 
-    // used CHATGPT to find efficient solution to checking if note exists and for overwriting:
+    // used CHATGPT to find efficient solution to checking if note exists and for overwriting (lines 28~37):
     // Convert the notes from storage into a Map for faster lookup by id
     const notesMap = new Map(notesFromStorage.map(note => [note.id, note]));
 

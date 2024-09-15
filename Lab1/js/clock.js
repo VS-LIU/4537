@@ -8,23 +8,32 @@
 
 class Clock {
     constructor() {
-        this.date = new Date();
+        this.updateClock();
+
+        // CHATGPT: Listen for custom "noteSaved" event
+        document.addEventListener("notesSaved", () => {
+            this.updateClock();
+        });
     }
 
     getTime() {
-        return this.date.toLocaleTimeString();
+        const now = new Date();
+        return now.toLocaleTimeString();
     }
 
     getDate() {
-        return this.date.toLocaleDateString();
+        const now = new Date();
+        return now.toLocaleDateString();
     }
 
-    getDateTime() {
-        return this.date.toLocaleString();
-    }
+    // getDateTime() {
+    //     const now = new Date();
+    //     return now.toLocaleString();
+    // }
 
-    update() {
-        this.date = new Date();
+    updateClock() {
+        const now = new Date();
+        document.getElementById('clockDisplay').innerText = now.toLocaleString();
     }
 
 }

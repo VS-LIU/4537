@@ -1,0 +1,48 @@
+    html {
+        box-sizing: border-box;
+    }
+
+    *, *:before, *:after {
+        box-sizing: inherit;
+    }
+
+    .centered {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .remove-margin-bottom {
+        margin-bottom: 0px;
+    };
+
+    .remove-margin-vertical {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    
+
+    .add-margin-textbox {
+        margin-top: 3em;
+        margin-bottom: 1em;
+    }
+
+    #box-quantity-input {
+        width: 100px;
+        margin-left: 10px;
+    }
+
+    #defaultTextBox {
+        width: 100vw;
+        height: 50px;
+    }
+
+    #mainGameWindow {
+        width: 100vw;
+        height: 50vh;
+    }
+
+    button {
+        transition: top 1s ease, left 1s ease; /* Adjust the timing as needed */
+    }

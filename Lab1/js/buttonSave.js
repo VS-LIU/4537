@@ -6,22 +6,24 @@
  * buttonAdd.js
  */
 
-class ButtonAdd {
-    constructor() {
+class ButtonSave {
+    constructor(note) {
+        this.note = note;
         this.button = document.createElement("button");
-        this.button.innerHTML = "Add Note";
-        this.button.addEventListener('click', () => this.addNote());
+        this.button.innerHTML = "Save";
+        this.button.addEventListener('click', () => this.saveNote());
         document.body.appendChild(this.button);
     }
 
-    addNote(note) {
-        console.log("Adding note...");
+    
+    saveNote(note) {
         if (note instanceof Note) {
+            console.log("Saving note: ", node.id);
             let noteBody = note.body;
             let newNote = new Note(noteBody);
             newNote.storeNote();
         } else {
-            console.log("Failed to add note. Valid note not found.");
+            console.log("Failed to save note. Valid note not found.");
             return;
         }
     }

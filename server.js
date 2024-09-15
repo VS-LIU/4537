@@ -8,6 +8,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/COMP4537/labs/0', express.static(path.join(__dirname, 'Lab0')))
+app.use('/COMP4537/labs/1', express.static(path.join(__dirname, 'Lab1')))
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`)

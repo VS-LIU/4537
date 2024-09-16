@@ -26,7 +26,7 @@ class NoteManager {
     }
 
     getNotes() {
-        return this.notes.map((note) => note.noteToJSON());  //ChatGPT: syntax to get all notes as JSON objects
+        return this.notes.map((note) => note.noteToJSON()); 
     }
 
     saveNotes() {
@@ -37,15 +37,28 @@ class NoteManager {
         document.dispatchEvent(event);
     }
 
-    
     loadNotes() {
         const savedNotes = JSON.parse(localStorage.getItem("notes")) || [];
+        let lastNote = null;
+
         savedNotes.forEach(noteData => {
             const note = new Note(noteData.id, noteData.top, noteData.left);
             note.text = noteData.text; 
             this.notes.push(note);
             document.getElementById("notes-container").appendChild(note.getNoteElement());
-            note.updateTextFromElement(); // Update text in the textarea after creating and appending the note element
+            note.updateTextFromElement(); 
+
+            lastNote = note; 
         });
+
+        this.lastNote = lastNote; 
+    }
+
+    getLastNote() {
+        return this.lastNote;
+    }
+
+    updateLastNote(note) {
+        this.lastNote = note;
     }
 }

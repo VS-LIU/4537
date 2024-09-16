@@ -16,15 +16,16 @@ class ButtonCreateNote {
         this.button = document.getElementById("createNote");
         this.noteManager = noteManager;
         this.button.addEventListener('click', () => this.createNote());
-        this.lastNote = null; 
     }
 
     createNote() {
         let top, left;
 
-        // asked CHATGPT to help determine positioning logic
-        if (this.lastNote) {
-            const nextPosition = Note.getNextPosition(this.lastNote);
+        // Get the latest last note from NoteManager
+        const lastNote = this.noteManager.getLastNote();
+
+        if (lastNote) {
+            const nextPosition = Note.getNextPosition(lastNote);
             top = nextPosition.top;
             left = nextPosition.left;
         } else {
@@ -36,7 +37,7 @@ class ButtonCreateNote {
         const frontendNotesContainer = document.getElementById("notes-container");
         frontendNotesContainer.appendChild(newestNote.getNoteElement());
 
-        // Update the reference to the last note
-        this.lastNote = newestNote;
+        // Update the lastNote reference to the newest note
+        this.noteManager.updateLastNote(newestNote); // Make sure NoteManager has this method
     }
 }

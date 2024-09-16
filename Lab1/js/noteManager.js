@@ -14,9 +14,19 @@ class NoteManager {
         this.nextId = 1;
     }
 
-    createNote() {
-        const note = new Note(this.nextId++);
+    createNote(top, left) {
+        const note = new Note(this.nextId++, top, left);
         this.notes.push(note);
         return note;
     }
+
+    // storeNote() {
+    //     let notes = JSON.parse(localStorage.getItem("notes"));
+    //     if (notes == null) {
+    //         notes = [];
+    //     }
+    //     notes.push(this);
+    //     localStorage.setItem("notes", JSON.stringify(notes));
+    // }
+
 }

@@ -6,6 +6,10 @@
  * writer.js
  */ 
 
+
+
+
+
 const msg_notSupported = "Sorry web Storage is not supported!";
 const msg_key = "hidden secret";
 const msg_written="A piece of data was written in local storage for the key:"
@@ -14,5 +18,7 @@ if (typeof (Storage) == "undefined") {
 document.write(msg_notSupported);
 window.stop();
 }
-localStorage.setItem(msg_key, "2021");
-document.write(msg_written+msg_key);
+
+
+const noteManager = new NoteManager();
+const buttonCreateNote = new ButtonCreateNote(noteManager);

@@ -12,9 +12,11 @@ class Clock {
 
         // CHATGPT: Listen for custom "noteSaved" event
         document.addEventListener("notesSaved", () => {
+            console.log("Saving notes to local storage..");
             this.updateClock();
         });
         document.addEventListener("notesRetrieved", () => {
+            console.log("Retrieving notes from local storage..");
             this.updateClock();
         })
     }

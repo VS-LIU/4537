@@ -13,51 +13,69 @@
 
 class NoteManager {
     constructor() {
-        this.notes = [];
-        this.nextId = 1;
+        this.notesArray = [];
+        this.nextId = this.loadNextId();  // ChatGPT: 
         this.loadNotes(); 
+        this.lastNote = null;
     }
 
-    createNote() {
-        const note = new Note(this.nextId++);
-        this.notes.push(note);
-        this.saveNotes();
-        this.renderNotes(); // Re-render all notes to adjust positions
+    // ChatGPT:  get the next available ID from storage
+    loadNextId() {
+        return parseInt(localStorage.getItem('nextId')) || 1;
+    }
+
+    // // ChatGPT: Save the next ID to local storage
+    saveNextId() {
+        localStorage.setItem('nextId', this.nextId);
+    }
+
+    
+    createNote(top = 50, left = 50) {
+        const note = new Note(this.nextId++, top, left);
+        this.notesArray.push(note);
+        this.saveNotes(); 
+        this.saveNextId(); // ChatGPT:Save the updated next ID
+        this.renderNotes(); // ChatGPT: Re-render all notes to adjust positions
         return note;
     }
 
+    
     getNotes() {
-        return this.notes.map((note) => note.noteToJSON()); 
+        return this.notesArray.map((note) => note.noteToJSON()); 
     }
 
-    saveNotes() {
-        console.log("Saving notes to local storage..");
-        const notes = this.getNotes();
-        localStorage.setItem("notes", JSON.stringify(notes));
-        const event = new Event("notesSaved");
+    getNotesFromStorage() {
+        const notesFromStorage = JSON.parse(localStorage.getItem("notes")) || [];
+        this.notesArray = notesFromStorage;
+        const event = new Event("notesRetrieved");
         document.dispatchEvent(event);
     }
 
+ 
+    saveNotes() {
+        const notesToSave = this.getNotes();
+        localStorage.setItem("notes", JSON.stringify(notesToSave));
+        const event = new Event("notesSaved");
+        document.dispatchEvent(event);
+    }
+  
     loadNotes() {
-        const savedNotes = JSON.parse(localStorage.getItem("notes")) || [];
-        let lastNote = null;
-
-        savedNotes.forEach(noteData => {
+        const notesFromStorage = JSON.parse(localStorage.getItem("notes")) || [];
+        notesFromStorage.forEach(noteData => {
             const note = new Note(noteData.id, noteData.top, noteData.left);
             note.text = noteData.text; 
-            this.notes.push(note);
+            this.notesArray.push(note);
             document.getElementById("notes-container").appendChild(note.getNoteElement());
             note.updateTextFromElement(); 
-
-            lastNote = note; 
         });
-
-        this.lastNote = lastNote; 
+        this.lastNote = this.notesArray[this.notesArray.length - 1] || null;
     }
+
+    // Render notes to the container
     renderNotes() {
         const notesContainer = document.getElementById("notes-container");
         notesContainer.innerHTML = ''; // Clear current notes
-        this.notes.forEach(note => {
+        this.notesArray.forEach(note => {
             notesContainer.appendChild(note.getNoteElement());
         });
     }
@@ -71,7 +89,8 @@ class NoteManager {
     }
 
     removeNoteById(id) {
-        this.notes = this.notes.filter(note => note.id !== id);
+        this.notesArray = this.notesArray.filter(note => note.id !== id);
         this.saveNotes();
+        this.renderNotes(); // Re-render all notes after removal
     }
 }

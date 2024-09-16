@@ -13,7 +13,13 @@ if (typeof (Storage) == "undefined") {
     window.stop();
 }
 
-const noteManager = new NoteManager();
+// const noteManager = new NoteManager();
 const buttonCreateNote = new ButtonCreateNote(noteManager);
 const buttonSaveNotes = new ButtonSaveNotes(noteManager);
 buttonSaveNotes.buttonAddEventListener();
+setInterval(() => {
+    clock.updateClock();
+    // buttonSaveNotes.saveNotes();
+    noteManager.saveNotes();
+
+}, 2000);

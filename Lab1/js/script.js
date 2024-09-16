@@ -7,7 +7,4 @@
  */
 
 const clock = new Clock();
-setInterval(() => {
-    clock.updateClock();
-    buttonSaveNotes.saveNotes();
-}, 2000);
+const noteManager = new NoteManager();

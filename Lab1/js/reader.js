@@ -11,17 +11,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const notesContainer = document.getElementById('notes-container');
 
     // Disable editing for all textareas within notes
-    const textareas = notesContainer.querySelectorAll('textarea');
-    textareas.forEach(textarea => {
-        textarea.disabled = true; // Disable editing
-    });
-    // noteManager.loadNotes();
+    const disableTextAreas = () => {
+        const textareas = notesContainer.querySelectorAll('textarea');
+        textareas.forEach(textarea => {
+            textarea.disabled = true; // Disable editing
+        });
+    };
+    disableTextAreas(); // Disable editing again after updating
 
-    // const clock = new Clock();
-    // const noteManager = new NoteManager();
+    
+    const hideDeleteButtons = () => {
+        const deleteButtons = notesContainer.querySelectorAll('.delete-button');
+        deleteButtons.forEach(button => {
+            button.style.display = 'none'; // Hide delete buttons
+        });
+    };
+    hideDeleteButtons();
+
+
     setInterval(() => {
-        clock.updateClock();
         noteManager.getNotesFromStorage();
-  
+        noteManager.updateNotes(); // Update notes based on localStorage changes
     }, 2000);
+
+    // Update the notes if the "notes" key in localStorage changes in other tabs
+    window.addEventListener('storage', (event) => {
+        if (event.key === 'notes') {
+            console.log("STORAGE CHANGED")
+            noteManager.getNotesFromStorage();
+            noteManager.updateNotes(); // Update notes based on localStorage changes
+            disableTextAreas();
+            hideDeleteButtons();
+        }
+    });
 });

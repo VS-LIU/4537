@@ -46,7 +46,11 @@ class NoteManager {
 
     getNotesFromStorage() {
         const notesFromStorage = JSON.parse(localStorage.getItem("notes")) || [];
-        this.notesArray = notesFromStorage;
+        notesFromStorage.forEach(noteData => {
+            const note = new Note(noteData.id, noteData.top, noteData.left);
+            note.text = noteData.text; 
+            this.notesArray.push(note);
+        });
         const event = new Event("notesRetrieved");
         document.dispatchEvent(event);
     }
@@ -79,6 +83,24 @@ class NoteManager {
             notesContainer.appendChild(note.getNoteElement());
         });
     }
+
+    updateNotes() {
+        const notesContainer = document.getElementById("notes-container");
+        this.notesArray.forEach(note => {
+            const noteElement = document.getElementById(note.id);
+            if (noteElement) {
+                // Update the text in the existing note element
+                const textarea = noteElement.querySelector('textarea');
+                if (textarea) {
+                    textarea.value = note.text;
+                }
+            } else {
+                // If the note element doesn't exist, create and add it
+                notesContainer.appendChild(note.getNoteElement());
+            }
+        });
+    }
+
 
     getLastNote() {
         return this.lastNote;

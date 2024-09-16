@@ -6,11 +6,16 @@
  * reader.js
  */ 
 
-// const msg_notSupported = "Sorry web Storage is not supported!";
-// const msg_key = "hidden secret";
-// const msg_read="stored data for the key ";
-// if (typeof (Storage) == "undefined") {
-// document.write(msg_notSupported);
-// window.stop();
-// }
-// document.write(msg_read+msg_key+":"+localStorage.getItem(msg_key));
+document.addEventListener('DOMContentLoaded', () => {
+    // Fetch the notes container
+    const notesContainer = document.getElementById('notes-container');
+    
+    // Disable editing for all textareas within notes
+    const textareas = notesContainer.querySelectorAll('textarea');
+    textareas.forEach(textarea => {
+        textarea.disabled = true; // Disable editing
+    });
+    
+    // Optional: You might want to fetch and display notes from localStorage
+    // and append them to the notesContainer if they are not already there
+});

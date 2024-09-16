@@ -4,19 +4,43 @@
  * Date: 2024-09-15
  * 
  * note.js
- */ 
+ * 
+ * A note object.
+ */
+
 
 class Note {
-    constructor(title, body) {
-        this.title = title;
-        this.body = body;
+    constructor(id) {
+        this.id = id;
+        this.isSaved = false;
+
+        this.noteElement = this.createNoteElement();
     }
 
-    getTitle() {
-        return this.title;
+    //asked CHATGPT to help me create a note with real-time typing
+    createNoteElement() {
+        const noteDiv = document.createElement('div');
+        noteDiv.classList.add('note-base');
+        noteDiv.setAttribute('id', this.id);
+
+        // Create the textarea inside the note for real-time typing
+        const textarea = document.createElement('textarea');
+        textarea.addEventListener('input', (e) => this.updateText(e));
+
+        // Append the textarea to the note
+        noteDiv.appendChild(textarea);
+
+        
+       return noteDiv;
     }
 
-    getBody() {
-        return this.body;
+    updateText(event) {
+        const text = event.target.value;
+        console.log(`Note ${this.id} content: `, text);
+    
+    }
+
+    getNoteElement() {
+        return this.noteElement;
     }
 }

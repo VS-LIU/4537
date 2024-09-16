@@ -27,10 +27,29 @@ class Note {
         const noteDiv = document.createElement('div');
         noteDiv.classList.add('note-base');
         noteDiv.setAttribute('id', this.id);
+        
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'X';
+        deleteButton.classList.add('delete-button');
+        deleteButton.addEventListener('click', () => this.deleteNote());
+        noteDiv.appendChild(deleteButton);
+        
         const textarea = document.createElement('textarea');
         textarea.addEventListener('input', (e) => this.updateText(e));
         noteDiv.appendChild(textarea);
+        
         return noteDiv;
+    }
+    deleteNote() {
+        if (confirm('Are you sure you want to delete this note?')) {
+            // Remove note from the DOM
+            this.noteElement.remove();
+
+            // Optionally, remove note from the noteManager and save changes
+            // Assuming a method to find and remove note by ID
+            noteManager.removeNoteById(this.id);
+            noteManager.saveNotes();
+        }
     }
 
     updateText(event) {

@@ -61,4 +61,9 @@ class NoteManager {
     updateLastNote(note) {
         this.lastNote = note;
     }
+
+    removeNoteById(id) {
+        this.notes = this.notes.filter(note => note.id !== id);
+        this.saveNotes();
+    }
 }

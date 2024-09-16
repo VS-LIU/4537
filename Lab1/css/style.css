@@ -94,3 +94,24 @@ button {
     color: #333;
     resize: none;
 } 
+
+
+.delete-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #474747;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+    line-height: 25px;
+}
+
+.delete-button:hover {
+    background-color: #aaaaaa;
+}

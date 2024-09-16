@@ -34,7 +34,7 @@ class NoteManager {
         const note = new Note(this.nextId++, top, left);
         this.notesArray.push(note);
         this.saveNotes(); 
-        this.saveNextId(); // ChatGPT:Save the updated next ID
+        this.saveNextId(); // ChatGPT: Save the updated next ID
         this.renderNotes(); // ChatGPT: Re-render all notes to adjust positions
         return note;
     }
@@ -44,6 +44,7 @@ class NoteManager {
         return this.notesArray.map((note) => note.noteToJSON()); 
     }
 
+    // CHATGPT:
     getNotesFromStorage() {
         const notesFromStorage = JSON.parse(localStorage.getItem("notes")) || [];
         notesFromStorage.forEach(noteData => {
@@ -63,6 +64,7 @@ class NoteManager {
         document.dispatchEvent(event);
     }
   
+    // CHATGPT:
     loadNotes() {
         const notesFromStorage = JSON.parse(localStorage.getItem("notes")) || [];
         notesFromStorage.forEach(noteData => {
@@ -75,7 +77,7 @@ class NoteManager {
         this.lastNote = this.notesArray[this.notesArray.length - 1] || null;
     }
 
-    // Render notes to the container
+    // CHATGPT: Render notes to the container
     renderNotes() {
         const notesContainer = document.getElementById("notes-container");
         notesContainer.innerHTML = ''; // Clear current notes
@@ -84,6 +86,7 @@ class NoteManager {
         });
     }
 
+    // CHATGPT:
     updateNotes() {
         const notesContainer = document.getElementById("notes-container");
         this.notesArray.forEach(note => {

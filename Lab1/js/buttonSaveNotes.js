@@ -11,14 +11,18 @@
 
 class ButtonSaveNotes {
     constructor() {
+
+    }
+
+    addButtonToFrontend() {
         this.button = document.createElement("button");
         this.button.innerHTML = "Save";
-        this.button.addEventListener('click', () => this.saveNotes());
+        this.button.addEventListener('click', () => ButtonSaveNotes.saveNotes());
         document.body.appendChild(this.button);
     }
 
-    static saveNotes(notes) {
-        console.log("Manually saving notes to local storage..");
+    static saveNotes(notes = []) {
+        console.log("Saving notes to local storage..");
 
         let notesFromStorage = JSON.parse(localStorage.getItem("notes"));
         if (notesFromStorage == null) {

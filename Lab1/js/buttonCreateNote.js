@@ -17,27 +17,32 @@ class ButtonCreateNote {
         this.noteManager = noteManager;
         this.button.addEventListener('click', () => this.createNote());
     }
-
     createNote() {
-        let top, left;
+        // Create a new note using the noteManager
+        const newestNote = this.noteManager.createNote();
 
-        // Get the latest last note from NoteManager
-        const lastNote = this.noteManager.getLastNote();
-
-        if (lastNote) {
-            const nextPosition = Note.getNextPosition(lastNote);
-            top = nextPosition.top;
-            left = nextPosition.left;
-        } else {
-            top = 50;
-            left = 50;
-        }
-
-        const newestNote = this.noteManager.createNote(top, left);
-        const frontendNotesContainer = document.getElementById("notes-container");
-        frontendNotesContainer.appendChild(newestNote.getNoteElement());
-
-        // Update the lastNote reference to the newest note
-        this.noteManager.updateLastNote(newestNote); // Make sure NoteManager has this method
+        // Note is automatically added and positioned by Flexbox, no additional positioning needed here
     }
+    // createNote() {
+    //     let top, left;
+
+    //     // Get the latest last note from NoteManager
+    //     const lastNote = this.noteManager.getLastNote();
+
+    //     if (lastNote) {
+    //         const nextPosition = Note.getNextPosition(lastNote);
+    //         top = nextPosition.top;
+    //         left = nextPosition.left;
+    //     } else {
+    //         top = 50;
+    //         left = 50;
+    //     }
+
+    //     const newestNote = this.noteManager.createNote(top, left);
+    //     const frontendNotesContainer = document.getElementById("notes-container");
+    //     frontendNotesContainer.appendChild(newestNote.getNoteElement());
+
+    //     // Update the lastNote reference to the newest note
+    //     this.noteManager.updateLastNote(newestNote); // Make sure NoteManager has this method
+    // }
 }

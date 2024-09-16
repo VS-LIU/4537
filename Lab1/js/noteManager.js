@@ -18,10 +18,11 @@ class NoteManager {
         this.loadNotes(); 
     }
 
-    createNote(top, left) {
-        const note = new Note(this.nextId++, top, left);
+    createNote() {
+        const note = new Note(this.nextId++);
         this.notes.push(note);
-        this.saveNotes(); 
+        this.saveNotes();
+        this.renderNotes(); // Re-render all notes to adjust positions
         return note;
     }
 
@@ -52,6 +53,13 @@ class NoteManager {
         });
 
         this.lastNote = lastNote; 
+    }
+    renderNotes() {
+        const notesContainer = document.getElementById("notes-container");
+        notesContainer.innerHTML = ''; // Clear current notes
+        this.notes.forEach(note => {
+            notesContainer.appendChild(note.getNoteElement());
+        });
     }
 
     getLastNote() {

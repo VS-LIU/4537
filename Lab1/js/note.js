@@ -15,11 +15,11 @@ class Note {
     constructor(id, top = 50, left = 50) {
         this.id = id;
         this.isSaved = false;
-        this.top = top;  // ChatGPT: the default value should be 50
-        this.left = left;  // ChatGPT: the default value should be 50
-        this.text = ""; 
+        this.top = 0; // Default value not used, as we are using Flexbox
+        this.left = 0; // Default value not used, as we are using Flexbox
+        this.text = "";
         this.noteElement = this.createNoteElement();
-        this.setPosition(this.noteElement);  // ChatGPT: set the position of the note
+        // this.setPosition(this.noteElement);  // ChatGPT: set the position of the note
         // this.updateTextFromElement();
     }
 

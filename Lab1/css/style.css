@@ -48,40 +48,32 @@ button {
 }
 
 
+/* Set up the notes container as a flex container */
 #notes-container {
-    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start; /* Align items to the top */
+    position: relative; /* Position notes absolutely within this container */
     width: 100%;
-    height: 30vh;
+    height: 100%; /* Ensure it takes the full viewport height */
+    overflow: auto; /* Allow scrolling if notes overflow */
 }
 
-
-/* .note-base {
-    width: 200px;
-    height: 200px;
-    background-color: #ffeb3b;
-    border: 2px solid #ccc;
-    padding: 10px;
-    margin: 10px;
-    position: absolute;
-    top: 50px;
-    left: 50px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-    resize: both;
-    overflow: hidden;
-} */
-
+/* Style each note */
 .note-base {
     width: 200px;
     height: 200px;
     background-color: #ffeb3b;
     border: 2px solid #ccc;
     padding: 10px;
-    position: absolute; /* Allows dynamic positioning */
+    position: relative; /* Remove absolute positioning */
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     resize: both;
     overflow: hidden;
+    margin: 10px; /* Space between notes */
+    display: flex;
+    flex-direction: column;
 }
-
 
 .note-base textarea {
     width: 100%;
@@ -93,14 +85,13 @@ button {
     font-size: 16px;
     color: #333;
     resize: none;
-} 
-
+}
 
 .delete-button {
     position: absolute;
     top: 5px;
     right: 5px;
-    background-color: #474747;
+    background-color: #2c2c2c;
     color: white;
     border: none;
     border-radius: 50%;
@@ -113,5 +104,9 @@ button {
 }
 
 .delete-button:hover {
-    background-color: #aaaaaa;
+    background-color: #bababa;
+}
+
+.read-only .delete-button {
+    display: none; /* Hide the delete button for read-only notes */
 }

@@ -17,30 +17,34 @@ class Note {
         this.isSaved = false;
         this.top = top;  // ChatGPT: the default value should be 50
         this.left = left;  // ChatGPT: the default value should be 50
-
+        this.text = ""; 
         this.noteElement = this.createNoteElement();
         this.setPosition(this.noteElement);  // ChatGPT: set the position of the note
+        // this.updateTextFromElement();
     }
 
     createNoteElement() {
         const noteDiv = document.createElement('div');
         noteDiv.classList.add('note-base');
         noteDiv.setAttribute('id', this.id);
-
-        
         const textarea = document.createElement('textarea');
-        textarea.addEventListener('input', (e) => this.updateText(e));  // ChatGPT: for real-time typing event listener
-
+        textarea.addEventListener('input', (e) => this.updateText(e));
         noteDiv.appendChild(textarea);
-
         return noteDiv;
     }
 
     updateText(event) {
-        const text = event.target.value;
-        console.log(`Note ${this.id} content: `, text);
+        this.text = event.target.value;
+        console.log(`Note ${this.id} content: `, this.text);
     }
 
+    updateTextFromElement() {
+        // Set text from element if it exists
+        const textarea = this.noteElement.querySelector('textarea');
+        if (textarea) {
+            textarea.value = this.text;
+        }
+    }
 
     // ChatGPT: helper function to set position values
     setPosition(element) {
@@ -50,6 +54,15 @@ class Note {
 
     getNoteElement() {
         return this.noteElement;
+    }
+
+    noteToJSON() {
+        return {
+            id: this.id,
+            top: this.top,
+            left: this.left,
+            text: this.text || ""
+        };
     }
 
     // ChatGPT: Static method to position notes relative to each other

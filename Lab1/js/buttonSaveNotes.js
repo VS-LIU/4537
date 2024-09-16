@@ -10,39 +10,28 @@
 
 
 class ButtonSaveNotes {
-    constructor() {
-
+    constructor(noteManager) {
+        this.noteManager = noteManager;
     }
 
-    addButtonToFrontend() {
-        this.button = document.createElement("button");
-        this.button.innerHTML = "Save";
-        this.button.addEventListener('click', () => ButtonSaveNotes.saveNotes());
-        document.body.appendChild(this.button);
+    buttonAddEventListener() {
+        this.button = document.getElementById("saveNotes");
+        this.button.addEventListener('click', () => this.saveNotes());
     }
 
-    static saveNotes(notes = []) {
-        console.log("Saving notes to local storage..");
-
-        let notesFromStorage = JSON.parse(localStorage.getItem("notes"));
-        if (notesFromStorage == null) {
-            notesFromStorage = [];
-        }
-
-        // used CHATGPT to find efficient solution to checking if note exists and for overwriting (lines 28~37):
-        // Convert the notes from storage into a Map for faster lookup by id
-        const notesMap = new Map(notesFromStorage.map(note => [note.id, note]));
-
-        // Loop through the incoming notes and overwrite or add them to the map
-        notes.forEach(note => {
-            notesMap.set(note.id, note);  // This will overwrite if the id exists, or add a new one
-        });
-
-        // Convert the map back to an array and save it to local storage
-        localStorage.setItem("notes", JSON.stringify(Array.from(notesMap.values())));
-
-        // asked CHATGPT on how to emit event (lines 40~41):
-        const event = new Event("notesSaved");
-        document.dispatchEvent(event);
+    
+    saveNotes() {
+        this.noteManager.saveNotes();
     }
 }
+//     saveNotes() {
+//         console.log("Saving notes to local storage..");
+
+//         const notes = this.noteManager.getNotes();
+
+//         localStorage.setItem("notes", JSON.stringify(notes));
+
+//         const event = new Event("notesSaved");
+//         document.dispatchEvent(event);
+//     }
+// }

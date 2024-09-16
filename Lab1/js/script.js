@@ -7,15 +7,7 @@
  */
 
 const clock = new Clock();
-// const button = new ButtonSaveNotes();
-const notesA = []
-const testObj = {
-    "id": 23
-}
-
-notesA.push(testObj)
-
 setInterval(() => {
-    clock.updateClock()
-    ButtonSaveNotes.saveNotes(notesA);
+    clock.updateClock();
+    buttonSaveNotes.saveNotes();
 }, 2000);

@@ -14,6 +14,9 @@ class Clock {
         document.addEventListener("notesSaved", () => {
             this.updateClock();
         });
+        document.addEventListener("notesRetrieved", () => {
+            this.updateClock();
+        })
     }
 
     getTime() {

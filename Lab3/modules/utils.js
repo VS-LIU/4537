@@ -16,7 +16,11 @@ function convertDateToString(date) {
     return date.toString();
 }
 
+function formatMessageGreeting(greeting, name, date) {
+    return greeting.replace('%name', name).replace('%date', date);
+}
+
 
   module.exports = {
-    getDate,
+    getDate, convertDateToString, formatMessageGreeting
   };

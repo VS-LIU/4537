@@ -9,5 +9,7 @@ var http = require('http');
 var fs = require('fs');
 const path = require('path');
 const url = require('url');
-const { getDate, convertDateToString, formatMessageGreeting } = require('./Lab3/modules/utils');
+const { getDate, convertDateToString, formatMessageGreeting, getContentType } = require('./Lab3/modules/utils');
 const { greeting } = require('./Lab3/lang/en/en');
+
+

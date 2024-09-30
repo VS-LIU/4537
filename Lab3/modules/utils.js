@@ -21,6 +21,20 @@ function formatMessageGreeting(greeting, name, date) {
 }
 
 
+// ChatGPT: to determine the content type based on file extension
+function getContentType(filePath) {
+    const extname = path.extname(filePath);
+    switch (extname) {
+      case '.html': return 'text/html';
+      case '.css': return 'text/css';
+      case '.js': return 'application/javascript';
+      case '.png': return 'image/png';
+      case '.jpg': return 'image/jpeg';
+      case '.gif': return 'image/gif';
+      default: return 'application/octet-stream';
+    }
+  }
+
   module.exports = {
-    getDate, convertDateToString, formatMessageGreeting
+    getDate, convertDateToString, formatMessageGreeting, getContentType
   };

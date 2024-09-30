@@ -55,8 +55,18 @@ function serveStaticFile(res, filePath, contentType, statusCode = 200) {
 
 
 function appendToFile(filePath, text, callback) {
-    fs.appendFile(filePath, `${text}\n`, (err) => {
-        callback(err);
+    const dir = path.dirname(filePath);
+
+    // Ensure the directory exists
+    fs.mkdir(dir, { recursive: true }, (err) => {
+        if (err) {
+            return callback(err);
+        }
+
+        // Append text to the file, creating it if it doesn't exist
+        fs.appendFile(filePath, `${text}\n`, (err) => {
+            callback(err);
+        });
     });
 }
 

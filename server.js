@@ -47,9 +47,14 @@ http.createServer((req, res) => {
         // Format the greeting message with the name and date
         const message = formatMessageGreeting(greeting, name, currentDateTime);
 
-        // Send the response with inline CSS for blue color
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.end(`<div style="color:blue;">${message}</div>`);
+        // Check the Accept header to determine response type
+        if (req.headers.accept && req.headers.accept.includes('application/json')) {
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ message }));
+        } else {
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(`<div style="color:blue;">${message}</div>`);
+        }
 
     // Handle 404 Not Found for unrecognized routes
     } else {

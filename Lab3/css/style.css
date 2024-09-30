@@ -26,4 +26,17 @@ html {
     color: red;
 }
 
-    
+
+.header-inline {
+    display: flex;
+    align-items: center; 
+    justify-content: flex-start; 
+}
+
+.header-inline h1 {
+    margin: 0; 
+}
+
+.header-inline a {
+    margin-left: 20px;
+}

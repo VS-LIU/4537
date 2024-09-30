@@ -6,6 +6,8 @@
  */
 
 
+const fs = require('fs');
+
 function getDate() {
     const date = new Date();
     return date.toString(); 
@@ -35,6 +37,21 @@ function getContentType(filePath) {
     }
   }
 
+
+// ChatGPT: Function to serve static files
+function serveStaticFile(res, filePath, contentType, statusCode = 200) {
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(500, { 'Content-Type': 'text/plain' });
+        res.end('500 Internal Server Error');
+      } else {
+        res.writeHead(statusCode, { 'Content-Type': contentType });
+        res.end(data);
+      }
+    });
+  }
+  
+
   module.exports = {
-    getDate, convertDateToString, formatMessageGreeting, getContentType
+    getDate, convertDateToString, formatMessageGreeting, getContentType, serveStaticFile
   };

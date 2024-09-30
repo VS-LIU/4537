@@ -1,15 +1,13 @@
-const express = require('express')
-const path = require('path')
-const app = express()
-const port = 3000
+/**
+ * COMP4537 - Lab3
+ * Victor Liu - A00971668 - set C
+ * 
+ * Server file for COMP4537
+ */
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'home.html'));
-});
-
-app.use('/COMP4537/labs/0', express.static(path.join(__dirname, 'Lab0')))
-app.use('/COMP4537/labs/1', express.static(path.join(__dirname, 'Lab1')))
-
-app.listen(port, () => {
-  console.log(`Listening on port ${port}`)
-})
+var http = require('http');
+var fs = require('fs');
+const path = require('path');
+const url = require('url');
+const { getDate, convertDateToString, formatMessageGreeting } = require('./Lab3/modules/utils');
+const { greeting } = require('./Lab3/lang/en/en');

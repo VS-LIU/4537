@@ -18,7 +18,7 @@ const currentPort = window.location.port; // Get the port number
 // Construct the full URL, including the port if it's present
 const fullUrlGetDate = `${currentProtocol}//${currentDomain}${currentPort ? `:${currentPort}` : ''}/COMP4537/labs/3/getDate?name=PLACEHOLDER`;
 const fullUrlRead = `${currentProtocol}//${currentDomain}${currentPort ? `:${currentPort}` : ''}/COMP4537/labs/3/readFile/file.txt`;
-const fullUrlWrite = `${currentProtocol}//${currentDomain}${currentPort ? `:${currentPort}` : ''}/COMP4537/labs/3/writeFile/?text=PLACEHOLDER_TEXT`;
+const fullUrlWrite = `${currentProtocol}//${currentDomain}${currentPort ? `:${currentPort}` : ''}/COMP4537/labs/3/writeFile?text=PLACEHOLDER_TEXT`;
 
 console.log("GetDate URL:", fullUrlGetDate);
 console.log("Read URL:", fullUrlRead);
@@ -37,5 +37,5 @@ dynamicUrlWriteElement.href = fullUrlWrite;
 // Replace the innerHTML of the <code> element to keep styling
 dynamicUrlElement.innerHTML = `<code>${currentProtocol}//${currentDomain}${currentPort ? `:${currentPort}` : ''}/COMP4537/labs/3/getDate?name=<span class="make-red">PLACEHOLDER</span></code>`;
 dynamicUrlReadElement.innerHTML = `<code>${currentProtocol}//${currentDomain}${currentPort ? `:${currentPort}` : ''}/COMP4537/labs/3/readFile/file.txt</code>`;
-dynamicUrlWriteElement.innerHTML = `<code>${currentProtocol}//${currentDomain}${currentPort ? `:${currentPort}` : ''}/COMP4537/labs/3/writeFile/?text=<span class="make-red">PLACEHOLDER_TEXT</span></code>`;
+dynamicUrlWriteElement.innerHTML = `<code>${currentProtocol}//${currentDomain}${currentPort ? `:${currentPort}` : ''}/COMP4537/labs/3/writeFile?text=<span class="make-red">PLACEHOLDER_TEXT</span></code>`;
 

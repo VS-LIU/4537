@@ -40,9 +40,9 @@ http.createServer((req, res) => {
 
         // Handle the /COMP4537/labs/3/getDate route
     } else if (parsedUrl.pathname === '/COMP4537/labs/3/getDate') {
-        console.log("API endpoint: /getDate, Name:", name);
         const name = parsedUrl.query.name || 'Guest'; // Get the 'name' query parameter or default to 'Guest'
         const currentDateTime = getDate(); // Get the current date and time
+        console.log("API endpoint: /getDate, Name:", name);
 
         // Format the greeting message with the name and date
         const message = formatMessageGreeting(greeting, name, currentDateTime);

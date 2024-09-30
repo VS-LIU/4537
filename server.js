@@ -10,7 +10,7 @@
 var http = require('http');
 const path = require('path');
 const url = require('url');
-const { getDate, convertDateToString, formatMessageGreeting, getContentType, serveStaticFile } = require('./Lab3/modules/utils');
+const { getDate, convertDateToString, formatMessageGreeting, getContentType, serveStaticFile, readFileContent, appendToFile } = require('./Lab3/modules/utils');
 const { greeting } = require('./Lab3/lang/en/en');
 
 
@@ -23,17 +23,30 @@ http.createServer((req, res) => {
         const filePath = path.join(__dirname, 'home.html');
         serveStaticFile(res, filePath, 'text/html');
 
-        // Serve static files from /COMP4537/labs/0
+
+    } else if (parsedUrl.pathname === '/COMP4537/labs/3/writeFile') {
+        const text = parsedUrl.query.text || 'No text provided';
+        appendToFile('./Lab3/assets/file.txt', text, (err) => { // Updated file path
+            if (err) {
+                console.log(err);
+                res.writeHead(500, { 'Content-Type': 'text/plain' });
+                res.end('Error writing to file');
+            } else {
+                res.writeHead(200, { 'Content-Type': 'text/plain' });
+                res.end(`Appended to file: ${text}`);
+            }
+        });
+
+        // Read from file route
+    } else if (parsedUrl.pathname === '/COMP4537/labs/3/readFile/file.txt') {
+        readFileContent('./Lab3/assets/file.txt', res); // Updated file path
+
     } else if (parsedUrl.pathname.startsWith('/COMP4537/labs/0')) {
         const filePath = path.join(__dirname, 'Lab0', parsedUrl.pathname.replace('/COMP4537/labs/0', ''));
         serveStaticFile(res, filePath, getContentType(filePath));
-
-        // Serve static files from /COMP4537/labs/1
     } else if (parsedUrl.pathname.startsWith('/COMP4537/labs/1')) {
         const filePath = path.join(__dirname, 'Lab1', parsedUrl.pathname.replace('/COMP4537/labs/1', ''));
         serveStaticFile(res, filePath, getContentType(filePath));
-
-        // Serve static files from /COMP4537/labs/3
     } else if (parsedUrl.pathname.startsWith('/COMP4537/labs/3') && parsedUrl.pathname !== '/COMP4537/labs/3/getDate') {
         const filePath = path.join(__dirname, 'Lab3', parsedUrl.pathname.replace('/COMP4537/labs/3', ''));
         serveStaticFile(res, filePath, getContentType(filePath));
@@ -47,7 +60,7 @@ http.createServer((req, res) => {
         // Format the greeting message with the name and date
         const message = formatMessageGreeting(greeting, name, currentDateTime);
 
-        // Check the Accept header to determine response type
+        // Check the Accept header to determine response type for API call
         if (req.headers.accept && req.headers.accept.includes('application/json')) {
             res.writeHead(200, { 'Content-Type': 'application/json' });
             res.end(JSON.stringify({ message }));
@@ -56,7 +69,6 @@ http.createServer((req, res) => {
             res.end(`<div style="color:blue;">${message}</div>`);
         }
 
-    // Handle 404 Not Found for unrecognized routes
     } else {
         res.writeHead(404, { 'Content-Type': 'text/plain' });
         res.end('404 Not Found');

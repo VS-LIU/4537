@@ -21,7 +21,7 @@ function convertDateToString(date) {
 }
 
 function formatMessageGreeting(greeting, name, date) {
-    return greeting.replace('%name', name).replace('%date', date);
+    return greeting.replace('%name%', name).replace('%date%', date);
 }
 
 

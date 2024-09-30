@@ -9,12 +9,21 @@ html {
     box-sizing: inherit;
 }
 
-.make-red {
-    color: red;
-}
-
 #dynamic-url {
     /* color: inherit; */
     text-decoration: none;
 }
+
+.add-margin-10 {
+    margin-bottom: 10px;
+}
+
+.add-margin-30 {
+    margin-bottom: 30px
+}
+
+.make-red {
+    color: red;
+}
+
     

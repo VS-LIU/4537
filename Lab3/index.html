@@ -18,34 +18,57 @@ index.html
 </head>
 
 <body>
-
     <header>
         <h1 class="centered remove-margin-bottom">COMP4537 - Lab 3: Server API</h1>
         <div>
             <p class="centered">Victor Liu #A00971668 - Set C</p>
             <p class="centered">2024-09-29</p>
         </div>
-        <hr>
+        <hr class="add-margin-30">
     </header>
     <main>
+        <section class="add-margin-30">
+            <p>
+                <strong>Part B</strong> of this lab aloows you to make a GET request by accessing this API endpoint
+                (replace <code class="make-red">PLACEHOLDER</code> with a desired name):
+                <a id="dynamic-url" href="#">
+                    <code>
+                        https://vctl.cc/COMP4537/labs/3/getDate?name=<span class="make-red">PLACEHOLDER</span>
+                    </code>
+                </a>
+            </p>
+        </section>
 
+        <section>
+            <p>
+                <strong>Part C</strong> of this lab allows you to write or read from a file by accessing these API
+                endpoints:
+            <ul>
+                <li class="add-margin-10">Read from file: <a id="url-read" href="#">
+                        <code>
+                            https://vctl.cc/COMP4537/labs/3/readFile/file.txt
+                        </code>
+                    </a></li>
+                <li>Write to file: <a id="url-write" href="#">
+                        <code>
+                            https://vctl.cc/COMP4537/labs/3/writeFile/?text=<span class="make-red">PLACEHOLDER_TEXT</span>
+                        </code>
+                    </a>
+                    <ul>
+                        <li>
+                            You can replace <code><span class="make-red">PLACEHOLDER_TEXT</span></code> with the text
+                            you would like to write to file.
+                        </li>
+                    </ul>
+                </li>
 
+            </ul>
+            </p>
+        </section>
     </main>
-
-    <p>
-        This lab requires you to make a GET request by accessing this API endpoint (replace <code
-            class="make-red">PLACEHOLDER</code> with a desired name):
-        <a id="dynamic-url" href="#">
-            <code>
-                https://vctl.cc/COMP4537/labs/3/getDate?name=<span class="make-red">PLACEHOLDER</span>
-            </code>
-        </a>
-    </p>
-    <script src="./js/index.js"></script>
-
     <footer>
-
     </footer>
+    <script src="./js/index.js"></script>
 </body>
 
 </html>

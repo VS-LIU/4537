@@ -1,0 +1,78 @@
+<!-- 
+* COMP4537 - Lab 4
+* Names: Andy Lau #A01192350 - Victor Liu #A00971668
+* Group: C1
+* Date: 2024-10-20
+* 
+* store.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COMP4537 - Lab4 - Team C1 - Store</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="header-inline">
+        <h1 class="centered remove-margin-bottom">
+          COMP4537 - Lab 4: Dictionary - Store
+        </h1>
+        <a href="./index.html">Home</a>
+      </div>
+      <div>
+        <p class="centered">
+          Team C1: Andy Lau #A01192350, Victor Liu #A00971668
+        </p>
+        <p class="centered">Date: 2024-10-20</p>
+      </div>
+      <hr class="add-margin-20-bottom" />
+    </header>
+    <main>
+      <section id="sectionStoreWord" class="add-margin-30">
+        <div>
+          <div class="add-margin-bottom-15">New Word</div>
+          <form id="storeForm" method="POST" action="/storeWord">
+            <div class="add-margin-bottom-15">
+              <label for="inputTextWord"></label>
+              <input
+                type="text"
+                id="inputTextWord"
+                name="inputTextWord"
+                placeholder="Word (required)"
+                required
+              />
+            </div>
+            <div class="add-margin-bottom-05em">
+              <label for="textareaDefinition"></label>
+              <textarea
+                id="textareaDefinition"
+                rows="4"
+                cols="50"
+                name="textareaDefinition"
+                placeholder="Definition (required)"
+                required
+              ></textarea>
+            </div>
+            <input
+              id="btnSubmitStore"
+              type="submit"
+              value="Add to Dictionary"
+            />
+          </form>
+        </div>
+      </section>
+      <section id="sectionDisplayResult" class="add-margin-30"></section>
+    </main>
+    <footer>
+      <hr class="add-margin-10" />
+      <a href="./search.html"
+        ><code><em>search.html</em></code></a
+      >
+    </footer>
+    <script type="module" src="./js/indexStore.js"></script>
+  </body>
+</html>

@@ -18,6 +18,7 @@ window.onload = function() {
   const element = document.getElementById("titleSearchWord");
   if (element) {  
     element.textContent = titleSearchWordText;
+    element.style.display = 'block';
   }
 };
 

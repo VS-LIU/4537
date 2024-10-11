@@ -28,6 +28,13 @@ body {
     text-decoration: none;
 }
 
+#titleSearchWord {
+    display: none; 
+}
+
+#titleStoreWord {
+    display: none; 
+}
 
 
 .add-margin-bottom-5 {

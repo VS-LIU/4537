@@ -29,11 +29,11 @@ body {
 }
 
 #titleSearchWord {
-    display: none; 
+    display: hidden; 
 }
 
 #titleStoreWord {
-    display: none; 
+    display: hidden; 
 }
 
 

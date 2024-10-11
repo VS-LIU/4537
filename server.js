@@ -44,11 +44,21 @@ http.createServer((req, res) => {
     } else if (parsedUrl.pathname.startsWith('/COMP4537/labs/0')) {
         const filePath = path.join(__dirname, 'Lab0', parsedUrl.pathname.replace('/COMP4537/labs/0', ''));
         serveStaticFile(res, filePath, getContentType(filePath));
+
     } else if (parsedUrl.pathname.startsWith('/COMP4537/labs/1')) {
         const filePath = path.join(__dirname, 'Lab1', parsedUrl.pathname.replace('/COMP4537/labs/1', ''));
         serveStaticFile(res, filePath, getContentType(filePath));
+
     } else if (parsedUrl.pathname.startsWith('/COMP4537/labs/3') && parsedUrl.pathname !== '/COMP4537/labs/3/getDate') {
         const filePath = path.join(__dirname, 'Lab3', parsedUrl.pathname.replace('/COMP4537/labs/3', ''));
+        serveStaticFile(res, filePath, getContentType(filePath));
+
+    } else if (parsedUrl.pathname.startsWith('/COMP4537/labs/4')) {
+        let relativePath = parsedUrl.pathname.replace('/COMP4537/labs/4', '');
+        if (relativePath === '' || relativePath === '/') {
+            relativePath = '/index.html';  // Default file to serve
+        }
+        const filePath = path.join(__dirname, 'Lab4', 'ServerClient', relativePath);
         serveStaticFile(res, filePath, getContentType(filePath));
 
         // Handle the /COMP4537/labs/3/getDate route

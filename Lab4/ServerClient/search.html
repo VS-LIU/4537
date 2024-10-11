@@ -8,63 +8,58 @@
 -->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>COMP4537 - Lab4 - Team C1 - Search</title>
-    <link rel="stylesheet" href="./css/style.css" />
-  </head>
 
-  <body>
-    <header>
-      <div class="header-inline">
-        <h1 class="centered remove-margin-bottom">
-          COMP4537 - Lab 4: Dictionary - Search
-        </h1>
-        <a href="./index.html">Home</a>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COMP4537 - Lab4 - Team C1 - Search</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+  <header>
+    <div class="header-inline">
+      <h1 class="centered remove-margin-bottom">
+        COMP4537 - Lab 4: Dictionary - Search
+      </h1>
+      <a href="./index.html">Home</a>
+    </div>
+    <div>
+      <p class="centered">
+        Team C1: Andy Lau #A01192350, Victor Liu #A00971668
+      </p>
+      <p class="centered">Date: 2024-10-13</p>
+    </div>
+    <hr class="add-margin-20-bottom" />
+  </header>
+  <main>
+    <section id="sectionSearchWord" class="add-margin-30">
       <div>
-        <p class="centered">
-          Team C1: Andy Lau #A01192350, Victor Liu #A00971668
-        </p>
-        <p class="centered">Date: 2024-10-13</p>
+        <!-- <div id="titleSearchWord" class="add-margin-bottom-15">Search Word</div> -->
+        <div id="titleSearchWord" class="add-margin-bottom-15">{ Placeholder_Search_Word_Title }</div>
+        <form id="searchForm" method="GET" action="/searchWord">
+          <label for="inputTextWord"></label>
+          <div class="add-margin-bottom-05em">
+            <input type="text" id="inputTextWord" name="inputTextWord" placeholder="Search word" required />
+          </div>
+          <input type="submit" value="Search" />
+        </form>
       </div>
-      <hr class="add-margin-20-bottom" />
-    </header>
-    <main>
-      <section id="sectionSearchWord" class="add-margin-30">
-        <div>
-          <div class="add-margin-bottom-15">Search Word</div>
-          <form id="searchForm" method="GET" action="/searchWord">
-            <label for="inputTextWord"></label>
-            <div class="add-margin-bottom-05em">
-              <input
-                type="text"
-                id="inputTextWord"
-                name="inputTextWord"
-                placeholder="Search word"
-                required
-              />
-            </div>
-            <input type="submit" value="Search" />
-          </form>
-        </div>
-      </section>
-      <section id="sectionDisplayResult" class="add-margin-30">
-        <!-- <div id="resultWord">
+    </section>
+    <section id="sectionDisplayResult" class="add-margin-30">
+      <!-- <div id="resultWord">
 
             </div>
             <div id="resultDefinition">
 
             </div> -->
-      </section>
-    </main>
-    <footer>
-      <hr class="add-margin-10" />
-      <a href="./store.html"
-        ><code><em>store.html</em></code></a
-      >
-    </footer>
-    <script type="module" src="./js/indexSearch.js"></script>
-  </body>
+    </section>
+  </main>
+  <footer>
+    <hr class="add-margin-10" />
+    <a href="./store.html"><code><em>store.html</em></code></a>
+  </footer>
+  <script type="module" src="./js/indexSearch.js"></script>
+</body>
+
 </html>

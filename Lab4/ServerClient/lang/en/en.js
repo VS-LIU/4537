@@ -9,4 +9,7 @@
 const RESPONSE_STATUS = (status) => `Response status: ${status}`;
 const STATUS_405 = (status) => `${status} (cannot access the requested page)`;
 
-export default { RESPONSE_STATUS, STATUS_405 };
+const titleSearchWord = `Search Word`;
+const titleStoreWord = `New Word`;
+
+export default { RESPONSE_STATUS, STATUS_405, titleSearchWord, titleStoreWord };

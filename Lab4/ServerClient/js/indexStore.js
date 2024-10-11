@@ -18,7 +18,7 @@ window.onload = function() {
   const element = document.getElementById("titleStoreWord");
   if (element) {  
     element.textContent = titleStoreWordText;
-    element.style.display = 'block';
+    element.style.visibility = 'visible';
   }
 };
 

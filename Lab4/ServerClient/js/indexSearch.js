@@ -22,47 +22,47 @@ window.onload = function() {
   }
 };
 
-// document
-//   .getElementById("searchForm")
-//   .addEventListener("submit", async function (event) {
-//     event.preventDefault();
+document
+  .getElementById("searchForm")
+  .addEventListener("submit", async function (event) {
+    event.preventDefault();
 
-//     const inputWord = document.getElementById("inputTextWord").value;
-//     const requestQuery = encodeURIComponent(inputWord);
+    const inputWord = document.getElementById("inputTextWord").value;
+    const requestQuery = encodeURIComponent(inputWord);
 
-//     // for local testing:
-//     // const url = `http://localhost:3000/comp4537-lab4/api/definitions/?word=${requestQuery}`;
-//     const url = `${SERVER_DOMAIN}/comp4537-lab4/api/definitions/?word=${requestQuery}`;
+    // for local testing:
+    // const url = `http://localhost:3000/comp4537-lab4/api/definitions/?word=${requestQuery}`;
+    const url = `${SERVER_DOMAIN}/comp4537-lab4/api/definitions/?word=${requestQuery}`;
 
-//     // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-//     try {
-//       const response = await fetch(url, {
-//         mode: "cors",
-//         method: "GET",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//       });
+    // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+    try {
+      const response = await fetch(url, {
+        mode: "cors",
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-//       if (!response.ok) {
-//         const resError = await response.json();
-//         const displayContainer = document.getElementById(
-//           "sectionDisplayResult"
-//         );
-//         displayContainer.innerHTML = `
-//           <div id="resultWord" class="add-margin-bottom-10"><strong>${inputWord}</strong></div>
-//           <div id="resultDefinition" class="to-lowercase"><em>${resError.error}</em></div>
-//         `;
-//         displayContainer.style.color = "red";
-//         throw new Error(MESSAGES.RESPONSE_STATUS(response.status));
-//       } else {
-//         const data = await response.json();
-//         document.getElementById("sectionDisplayResult").innerHTML = `
-//         <div id="resultWord" class="add-margin-bottom-10"><strong>${data.word}</strong></div>
-//         <div id="resultDefinition">${data.definition}</div>
-//     `;
-//       }
-//     } catch (error) {
-//       console.error(error.message);
-//     }
-//   });
+      if (!response.ok) {
+        const resError = await response.json();
+        const displayContainer = document.getElementById(
+          "sectionDisplayResult"
+        );
+        displayContainer.innerHTML = `
+          <div id="resultWord" class="add-margin-bottom-10"><strong>${inputWord}</strong></div>
+          <div id="resultDefinition" class="to-lowercase"><em>${resError.error}</em></div>
+        `;
+        displayContainer.style.color = "red";
+        throw new Error(MESSAGES.RESPONSE_STATUS(response.status));
+      } else {
+        const data = await response.json();
+        document.getElementById("sectionDisplayResult").innerHTML = `
+        <div id="resultWord" class="add-margin-bottom-10"><strong>${data.word}</strong></div>
+        <div id="resultDefinition">${data.definition}</div>
+    `;
+      }
+    } catch (error) {
+      console.error(error.message);
+    }
+  });

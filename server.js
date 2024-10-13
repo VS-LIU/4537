@@ -61,6 +61,14 @@ http.createServer((req, res) => {
         const filePath = path.join(__dirname, 'Lab4', 'ServerClient', relativePath);
         serveStaticFile(res, filePath, getContentType(filePath));
 
+    } else if (parsedUrl.pathname.startsWith('/COMP4537/labs/5/server1')) {
+        let relativePath = parsedUrl.pathname.replace('/COMP4537/labs/5/server1', '');
+        if (relativePath === '' || relativePath === '/') {
+            relativePath = '/index.html';  // Default file to serve
+        }
+        const filePath = path.join(__dirname, 'Lab5', 'server1', relativePath);
+        serveStaticFile(res, filePath, getContentType(filePath));
+
         // Handle the /COMP4537/labs/3/getDate route
     } else if (parsedUrl.pathname === '/COMP4537/labs/3/getDate') {
         const name = parsedUrl.query.name || 'Guest'; // Get the 'name' query parameter or default to 'Guest'

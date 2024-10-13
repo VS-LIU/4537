@@ -208,7 +208,7 @@ document
           throw new Error(CONSTANTS.RESPONSE_STATUS(response.status));
         } else if (response.status === 409) {
           const data = await response.json();
-          console.log("@@@@@@@@@@@@@@@@@", data)
+          // console.log("@@@@@@@@@@@@@@@@@", data)
           console.log(data)
           const displayContainer = document.getElementById(
             "divResultSectionSendQuery"

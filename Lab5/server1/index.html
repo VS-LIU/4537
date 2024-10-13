@@ -1,0 +1,76 @@
+<!-- 
+* COMP4537 - Lab 5
+* Names: Andy Lau #A01192350 - Victor Liu #A00971668
+* Group: C1
+* Date: 2024-10-13
+* 
+* index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="pageTitle"></title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="header-inline">
+        <h1 class="centered remove-margin-bottom" id="labHeader"></h1>
+      </div>
+      <div>
+        <p class="centered" id="teamMembers"></p>
+        <p class="centered" id="submitDate"></p>
+      </div>
+      <hr class="add-margin-bottom-15" />
+    </header>
+    <main>
+      <section class="add-margin-bottom-30">
+        <h2 id="headerSectionTestDB" class="add-margin-bottom-10"></h2>
+        <div id="descriptionSectionTestDB" class="add-margin-bottom-10"></div>
+        <div id="divTestButtonSectionTestDB" class="add-margin-bottom-15">
+          <form id="formTestDBQuery" method="POST" action="/testQuery">
+            <input id="testButtonSectionTestDB" type="submit" value="" />
+          </form>
+        </div>
+        <div
+          id="divResultSectionTestDB"
+          class="add-margin-bottom-15 set-height-20px"
+        ></div>
+      </section>
+
+      <hr class="add-margin-bottom-15" />
+
+      <section class="add-margin-bottom-30">
+        <h2 id="headerSectionSendQuery" class="add-margin-bottom-10"></h2>
+        <div
+          id="descriptionSectionSendQuery"
+          class="add-margin-bottom-15"
+        ></div>
+        <div class="add-margin-bottom-15">
+          <form id="formSendQuery" method="POST" action="/sendQuery">
+            <div class="add-margin-bottom-05em">
+              <textarea
+                id="textBoxSendQuery"
+                rows="4"
+                cols="50"
+                name="textBoxSendQuery"
+                placeholder=""
+                required
+              ></textarea>
+            </div>
+            <input id="buttonSendQuery" type="submit" value="" />
+          </form>
+        </div>
+        <div
+          id="divResultSectionSendQuery"
+          class="add-margin-bottom-15 set-height-20px"
+        ></div>
+      </section>
+    </main>
+    <footer></footer>
+    <script type="module" src="./js/client.js"></script>
+  </body>
+</html>
